@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blackdeal</title>
+    
+    <link id="favicon" rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20260%20240'%3E%3Crect%20x='10'%20y='10'%20width='240'%20height='220'%20rx='38'%20fill='transparent'/%3E%3Cpath%20d='M60%2055%20v130%20h22%20c26%200%2046-16%2046-40%20c0-14-7-26-19-33%20c15-7%2024-20%2024-35%20c0-26-21-42-50-42%20h-23%20z'%20fill='%23ffffff'/%3E%3Cpath%20d='M155%2055%20v130%20h22%20c36%200%2063-26%2063-65%20c0-40-27-65-63-65%20h-22%20z%20M177%2080%20h12%20c23%200%2040%2017%2040%2040%20c0%2023-17%2040-40%2040%20h-12%20z'%20fill='%23ffffff'/%3E%3C/svg%3E">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <style>
+      /* Logo-specific styles (from original) */
+      .logo-svg {
+        width: 36px !important;
+        height: 36px !important;
+        max-width: 100%;
+        max-height: 100%;
+        display: inline-block;
+        vertical-align: middle;
+      }
+      #auth-container .auth-header .logo-svg {
+        width: 48px !important;
+        height: 48px !important;
+      }
+      #top-navbar .logo-svg {
+        width: 32px !important;
+        height: 32px !important;
+      }
+    </style>
+</head>
+<body>
+
+    <div id="auth-container">
+        <form id="login-form" class="auth-form">
+            <div class="auth-header">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 240" class="logo-svg">
+                  <rect x="10" y="10" width="240" height="220" rx="38" fill="var(--logo-bg-color, var(--text-primary))" stroke="var(--border-color)" stroke-width="6"/>
+                  <path d="M60 55 v130 h22 c26 0 46-16 46-40 c0-14-7-26-19-33 c15-7 24-20 24-35 c0-26-21-42-50-42 h-23 z" fill="var(--logo-fg-color, var(--bg-secondary))"/>
+                  <path d="M155 55 v130 h22 c36 0 63-26 63-65 c0-40-27-65-63-65 h-22 z M177 80 h12 c23 0 40 17 40 40 c0 23-17 40-40 40 h-12 z" fill="var(--logo-fg-color, var(--bg-secondary))"/>
+                </svg>
+                <h2>Blackdeal Login</h2>
+            </div>
+            <input type="email" id="login-email" placeholder="Personal Email" required>
+            <input type="password" id="login-password" placeholder="Password" required>
+            <button type="submit" id="login-btn">Login</button>
+        </form>
+
+        <form id="register-form" class="auth-form hidden">
+            <div class="auth-header">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 240" class="logo-svg">
+                  <rect x="10" y="10" width="240" height="220" rx="38" fill="var(--logo-bg-color, var(--text-primary))" stroke="var(--border-color)" stroke-width="6"/>
+                  <path d="M60 55 v130 h22 c26 0 46-16 46-40 c0-14-7-26-19-33 c15-7 24-20 24-35 c0-26-21-42-50-42 h-23 z" fill="var(--logo-fg-color, var(--bg-secondary))"/>
+                  <path d="M155 55 v130 h22 c36 0 63-26 63-65 c0-40-27-65-63-65 h-22 z M177 80 h12 c23 0 40 17 40 40 c0 23-17 40-40 40 h-12 z" fill="var(--logo-fg-color, var(--bg-secondary))"/>
+                </svg>
+                <h2>Create Account</h2>
+            </div>
+            <input type="text" id="register-name" placeholder="Full Name" required>
+            <input type="text" id="register-regnumber" placeholder="Registration Number" required>
+            <input type="text" id="register-section" placeholder="Section (e.g., K21AB)" required>
+            <input type="tel" id="register-mobile" placeholder="Mobile Number" required>
+            <input type="email" id="register-email" placeholder="Personal Email" required>
+            <input type="password" id="register-password" placeholder="Password (Min. 6 characters)" required>
+            <button type="submit" id="register-btn">Register</button>
+        </form>
+
+        <p id="auth-toggle">Don't have an account? <strong>Register here</strong></p>
+    </div>
+
+    <div id="app-container" class="hidden">
+        
+        <header id="top-navbar">
+            <div class="navbar-container">
+                <a href="#" class="navbar-brand" id="nav-brand-logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 240" class="logo-svg">
+                      <rect x="10" y="10" width="240" height="220" rx="38" fill="transparent" stroke="none"/>
+                      <path d="M60 55 v130 h22 c26 0 46-16 46-40 c0-14-7-26-19-33 c15-7 24-20 24-35 c0-26-21-42-50-42 h-23 z" fill="currentColor"/>
+                      <path d="M155 55 v130 h22 c36 0 63-26 63-65 c0-40-27-65-63-65 h-22 z M177 80 h12 c23 0 40 17 40 40 c0 23-17 40-40 40 h-12 z" fill="currentColor"/>
+                    </svg>
+                    <h3>Blackdeal</h3>
+                </a>
+
+                <nav class="navbar-links">
+                    <a href="#" id="nav-home-btn" class="nav-link active">
+                        <i class="nav-icon fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="#" id="nav-mytasks-btn" class="nav-link">
+                        <i class="nav-icon fas fa-tasks"></i>
+                        <span>My Tasks</span>
+                    </a>
+                    <a href="#" id="nav-leaderboard-btn" class="nav-link">
+                        <i class="nav-icon fas fa-trophy"></i>
+                        <span>Leaderboard</span>
+                    </a>
+                    <a href="#" id="nav-help-btn" class="nav-link">
+                        <i class="nav-icon fas fa-question-circle"></i>
+                        <span>Help</span>
+                    </a>
+                </nav>
+
+                <div class="navbar-user">
+                    <button id="nav-post-task-btn" class="btn-base special-link">
+                        <i class="nav-icon fas fa-plus-circle"></i>
+                        <span>Post Task</span>
+                    </button>
+                    <button id="dark-mode-btn" class="btn-base" aria-pressed="false" title="Toggle theme">
+                        <i id="dark-mode-icon" class="fas fa-sun" aria-hidden="true"></i>
+                    </button>
+                    <a href="#" id="nav-profile-btn" class="nav-link profile-link">
+                        <i class="nav-icon fas fa-user"></i>
+                        <span>My Profile</span>
+                    </a>
+                    <button id="logout-btn" class="btn-base">
+                        <i class="fas fa-right-from-bracket"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main id="main-content">
+            
+            <div id="home-page" class="page-content">
+                <h2>Dashboard</h2>
+                
+                <form id="create-task-form">
+                    <h3>Post a New Task</h3>
+                    <input type="text" id="task-pickup" placeholder="Pickup Location (e.g., Main Gate)" required>
+                    <input type="text" id="task-drop" placeholder="Drop Location (e.g., H-Block 216)" required>
+                    <textarea id="task-description" rows="3" placeholder="Description (e.g., 'Collect parcel from guard')" required></textarea>
+                    <input type="number" id="task-reward" placeholder="Reward (₹)" required>
+                    <input type="tel" id="task-contact" placeholder="Contact number (optional, for helper to call)">
+                    <input type="text" id="task-time" placeholder="Time (e.g., 'Within 30 mins')" required>
+                    <button type="submit" class="btn-base">Post Task</button>
+                </form>
+
+                <div id="task-feed-container">
+                    <h2>Campus Open Tasks</h2>
+                    <div id="task-feed" class="task-list">
+                        </div>
+                </div>
+            </div>
+
+            <div id="mytasks-page" class="page-content hidden">
+                <h2>My Tasks</h2>
+                <div class="profile-grid">
+                    <div id="my-posted-tasks-container">
+                        <h4>My Posted Tasks</h4>
+                        <div id="my-posted-tasks" class="task-list">
+                            </div>
+                    </div>
+                    <div id="my-accepted-tasks-container">
+                        <h4>My Accepted Tasks</h4>
+                        <div id="my-accepted-tasks" class="task-list">
+                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="profile-page" class="page-content hidden">
+                <h2>My Profile</h2>
+                <div class="profile-card" id="profile-card" aria-live="polite" style="margin-bottom:20px;">
+                  <div class="profile-avatar" aria-hidden="true">
+                    <span id="profile-initial">U</span>
+                  </div>
+                  <div class="profile-identity">
+                    <div class="profile-name" id="profile-name">Name</div>
+                    <div class="profile-email-small" id="profile-email">email@example.com</div>
+                    <div class="profile-stats" aria-hidden="true">
+                      <div class="stat-pill" id="stat-posted-small">Posted: 0</div>
+                      <div class="stat-pill" id="stat-accepted-small">Accepted: 0</div>
+                    </div>
+                  </div>
+                  <div class="profile-actions">
+                    <button class="profile-edit-btn" id="profile-edit-btn" type="button">Edit</button>
+                    <div style="font-size:0.85rem;color:var(--text-secondary);">Member since</div>
+                    <div style="font-weight:600;color:var(--text-primary);" id="profile-member-since">-</div>
+                  </div>
+                  <div class="profile-details" role="list">
+                    <div role="listitem">
+                      <div class="profile-detail-label">Registration No.</div>
+                      <div class="profile-detail-value" id="profile-regnumber">-</div>
+                    </div>
+                    <div role="listitem">
+                      <div class="profile-detail-label">Section</div>
+                      <div class="profile-detail-value" id="profile-section">-</div>
+                    </div>
+                    <div role="listitem">
+                      <div class="profile-detail-label">Mobile</div>
+                      <div class="profile-detail-value" id="profile-mobile">-</div>
+                    </div>
+                    <div role="listitem">
+                      <div class="profile-detail-label">Rating</div>
+                      <div class="profile-detail-value" id="profile-rating">-</div>
+                    </div>
+                  </div>
+                </div>
+
+                <h3>My Stats</h3>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h4>Tasks Posted</h4>
+                        <span id="stat-posted">0</span>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Tasks Accepted</h4>
+                        <span id="stat-accepted">0</span>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Tasks Completed</h4>
+                        <span id="stat-completed">0</span>
+                    </div>
+                    <div class="stat-card">
+                        <h4>My Rating</h4>
+                        <span id="stat-rating">5.0 <span class="star">⭐</span></span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="leaderboard-page" class="page-content hidden">
+                <h2>Leaderboard</h2>
+                <p>Top campus helpers will be shown here.</p>
+                </div>
+
+            <div id="help-page" class="page-content hidden">
+                <h2>Help & FAQ</h2>
+                <p>How to use Blackdeal:</p>
+                <ol>
+                    <li>Post a task you need help with.</li>
+                    <li>Wait for another student to accept it.</li>
+                    <li>Contact them and get your work done!</li>
+                </ol>
+                </div>
+            
+        </main>
+
+        <footer id="app-footer">
+            <p>&copy; 2025 Blackdeal. All rights reserved.</p>
+        </footer>
+
+    </div>
+
+    <div id="delete-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <h3>Delete Task?</h3>
+            <p>Are you sure you want to delete this task? This action cannot be undone.</p>
+            <div class="modal-actions">
+                <button id="modal-cancel-btn" class="modal-btn secondary btn-base">Cancel</button>
+                <button id="modal-confirm-delete-btn" class="modal-btn danger btn-base">Delete</button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="profile-edit-modal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="modal-content profile-edit-card" role="document" aria-labelledby="profile-edit-title">
+        <div class="modal-header" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+          <h3 id="profile-edit-title" style="margin:0;font-size:1.05rem;">Edit Profile</h3>
+          <button id="profile-edit-close" class="modal-close" aria-label="Close" title="Close">&times;</button>
+        </div>
+        <form id="profile-edit-form" style="margin-top:12px;">
+          <div class="profile-edit-grid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;">
+            <input id="profile-edit-name" type="text" placeholder="Full Name" />
+            <input id="profile-edit-regnumber" type="text" placeholder="Registration Number (8 digits)" />
+            <input id="profile-edit-section" type="text" placeholder="Section (e.g., K23SE)" />
+            <input id="profile-edit-mobile" type="tel" placeholder="Mobile (10 digits)" />
+          </div>
+          <div class="modal-actions" style="margin-top:18px;display:flex;justify-content:flex-end;gap:10px;">
+            <button id="profile-edit-cancel" type="button" class="modal-btn secondary btn-base">Cancel</button>
+            <button id="profile-edit-save" type="button" class="modal-btn primary btn-base">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="custom-popup" class="custom-popup-overlay hidden" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="custom-popup-content" tabindex="-1">
+        <h3 class="custom-popup-title" id="custom-popup-title">Title</h3>
+        <div class="custom-popup-message" id="custom-popup-message">Message goes here</div>
+        <div class="custom-popup-actions">
+          <button id="custom-popup-cancel" class="custom-popup-btn secondary">Cancel</button>
+          <button id="custom-popup-ok" class="custom-popup-btn primary">OK</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="toast-container"></div>
+
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+    <script src="js/firebase.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/app.js"></script>
+
+    <script>
+    (function() {
+      const link = document.getElementById('favicon');
+      if (!link) return;
+      const WHITE = '#ffffff';
+      function setFavicon(color) {
+        const fg = color.trim();
+        const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 240">
+          <rect x="10" y="10" width="240" height="220" rx="38" fill="transparent"/>
+          <path d="M60 55 v130 h22 c26 0 46-16 46-40 c0-14-7-26-19-33 c15-7 24-20 24-35 c0-26-21-42-50-42 h-23 z" fill="${fg}"/>
+          <path d="M155 55 v130 h22 c36 0 63-26 63-65 c0-40-27-65-63-65 h-22 z M177 80 h12 c23 0 40 17 40 40 c0 23-17 40-40 40 h-12 z" fill="${fg}"/>
+        </svg>`;
+        link.setAttribute('href', 'data:image/svg+xml;utf8,' + encodeURIComponent(svg));
+      }
+      setFavicon(WHITE);
+      const obs = new MutationObserver(() => setFavicon(WHITE));
+      obs.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+      try {
+        const mq = window.matchMedia('(prefers-color-scheme: dark)');
+        if (mq && 'addEventListener' in mq) {
+          mq.addEventListener('change', () => setFavicon(WHITE));
+        }
+      } catch (e) { }
+    })();
+    </script>
+</body>
+</html>
